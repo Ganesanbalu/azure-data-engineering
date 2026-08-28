@@ -1,0 +1,55 @@
+{
+	"name": "DelimitedText1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "raw"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "inventory_date",
+				"type": "String"
+			},
+			{
+				"name": "warehouse_id",
+				"type": "String"
+			},
+			{
+				"name": "product_id",
+				"type": "String"
+			},
+			{
+				"name": "inventory_level",
+				"type": "String"
+			},
+			{
+				"name": "reorder_point",
+				"type": "String"
+			},
+			{
+				"name": "reserved_quantity",
+				"type": "String"
+			},
+			{
+				"name": "available_quantity",
+				"type": "String"
+			},
+			{
+				"name": "stock_status",
+				"type": "String"
+			}
+		]
+	}
+}
