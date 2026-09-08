@@ -75,26 +75,13 @@
 									}
 								},
 								"sink": {
-									"type": "DelimitedTextSink",
+									"type": "BinarySink",
 									"storeSettings": {
 										"type": "AzureBlobStorageWriteSettings",
 										"copyBehavior": "PreserveHierarchy"
-									},
-									"formatSettings": {
-										"type": "DelimitedTextWriteSettings",
-										"quoteAllText": true,
-										"fileExtension": ".csv"
 									}
 								},
-								"enableStaging": false,
-								"translator": {
-									"type": "TabularTranslator",
-									"typeConversion": true,
-									"typeConversionSettings": {
-										"allowDataTruncation": true,
-										"treatBooleanAsNumber": false
-									}
-								}
+								"enableStaging": false
 							},
 							"inputs": [
 								{
@@ -110,14 +97,8 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "processed1",
-									"type": "DatasetReference",
-									"parameters": {
-										"foldername": {
-											"value": "@item().name",
-											"type": "Expression"
-										}
-									}
+									"referenceName": "root",
+									"type": "DatasetReference"
 								}
 							]
 						}
