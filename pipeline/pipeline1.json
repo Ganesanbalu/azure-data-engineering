@@ -16,11 +16,8 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "raw",
-						"type": "DatasetReference",
-						"parameters": {
-							"folder": "Orders"
-						}
+						"referenceName": "root",
+						"type": "DatasetReference"
 					},
 					"fieldList": [
 						"childItems"
@@ -66,15 +63,15 @@
 							"userProperties": [],
 							"typeProperties": {
 								"source": {
-									"type": "BinarySource",
+									"type": "DelimitedTextSource",
 									"storeSettings": {
-										"type": "AzureBlobStorageReadSettings",
+										"type": "AzureBlobFSReadSettings",
 										"recursive": true,
 										"wildcardFileName": "*.csv",
-										"deleteFilesAfterCompletion": false
+										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
-										"type": "BinaryReadSettings"
+										"type": "DelimitedTextReadSettings"
 									}
 								},
 								"sink": {
@@ -89,14 +86,22 @@
 										"fileExtension": ".csv"
 									}
 								},
-								"enableStaging": false
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
 							},
 							"inputs": [
 								{
-									"referenceName": "raw",
+									"referenceName": "DS_ADLS_Raw",
 									"type": "DatasetReference",
 									"parameters": {
-										"folder": {
+										"Foldername": {
 											"value": "@item().name",
 											"type": "Expression"
 										}
